@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Iniciar">Start</string>
+    <string name="Opciones">Options</string>
+    <string name="Calculadora">Calculator</string>
+    <string name="Salir">Exit</string>
+</resources>
