@@ -1,5 +1,6 @@
 package com.example.test.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -38,11 +39,16 @@ public class SecondActivity extends AppCompatActivity {
         SubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (PassText.getText().toString().isEmpty() && UserText.getText().toString().equals("") ){
+                if (PassText.getText().toString().equals("") && UserText.getText().toString().equals("") ){
                     Toast.makeText(SecondActivity.this, "Error", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     Toast.makeText(SecondActivity.this, "Logueado", Toast.LENGTH_SHORT).show();
+
+                    Bundle data = new Bundle();
+                    data.putString("Username", UserText.getText().toString());
+
+                    startActivity(new Intent(SecondActivity.this, ThirdActivity.class).putExtras(data));
                 }
             }
         });
