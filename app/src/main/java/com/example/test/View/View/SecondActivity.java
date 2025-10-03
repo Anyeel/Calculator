@@ -1,4 +1,4 @@
-package com.example.test.View;
+package com.example.test.View.View;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.test.R;
-
-import java.lang.reflect.Array;
+import com.example.test.View.Controller.Cifrado;
 
 public class SecondActivity extends AppCompatActivity {
 
@@ -41,31 +40,28 @@ public class SecondActivity extends AppCompatActivity {
         SubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (UserText.getText().toString().isEmpty() && PassText.getText().toString().isEmpty()){
+                String Pass = PassText.getText().toString();
+                String User = UserText.getText().toString();
+
+                if (User.isEmpty() && Pass.isEmpty()){
                     Toast.makeText(SecondActivity.this, "Rellena todos los campos", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    String Pass = PassText.getText().toString();
-                    String User = UserText.getText().toString();
-                    if (Pass.toCharArray().length >= 4 && Pass.toCharArray().length <= 10 && User.toCharArray().length >= 4 && User.toCharArray().length <= 10){
-                        for (int i = 0; i < Pass.toCharArray().length; i++ ){
-                            char c = Pass.toCharArray()[i];
-                            if (Pass.matches("^[a-zA-Z0-9]+$")) {
-                                System.out.println("Entrada válida");
-                                Toast.makeText(SecondActivity.this, "Logueado", Toast.LENGTH_SHORT).show();
+                } else if (Pass.length() >= 4 && Pass.length() <= 10 && User.length() >= 4 && User.length() <= 10){
+                    if (User.matches("^[a-zA-Z0-9]+$") && Pass.matches("^[a-zA-Z0-9]+$")) {
+                        System.out.println("Entrada válida");
+                        String passCifrada = Cifrado.cifrarCesar(Pass);
 
-                                Bundle data = new Bundle();
-                                data.putString("Username", UserText.getText().toString());
+                        Toast.makeText(SecondActivity.this, "Logueado", Toast.LENGTH_SHORT).show();
 
-                                startActivity(new Intent(SecondActivity.this, ThirdActivity.class).putExtras(data));
-                            } else {
-                                Toast.makeText(SecondActivity.this, "Solo se permiten letras y números", Toast.LENGTH_SHORT).show();
-                            }
-                        }
+                        Bundle data = new Bundle();
+                        data.putString("Username", User);
+                        data.putString("Contraseña", passCifrada);
+
+                        startActivity(new Intent(SecondActivity.this, ThirdActivity.class).putExtras(data));
+                    } else {
+                        Toast.makeText(SecondActivity.this, "Solo se permiten letras y números", Toast.LENGTH_SHORT).show();
                     }
-                    else {
-                        Toast.makeText(SecondActivity.this, "Deben de tener entre 4 y 10 caracteres inclusive", Toast.LENGTH_SHORT).show();
-                    }
+                } else {
+                    Toast.makeText(SecondActivity.this, "Ambos campos deben de tener entre 4 y 10 caracteres inclusive", Toast.LENGTH_SHORT).show();
                 }
             }
         });

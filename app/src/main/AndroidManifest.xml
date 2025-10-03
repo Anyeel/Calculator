@@ -12,13 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Test">
         <activity
-            android:name=".View.ThirdActivity"
+            android:name=".View.View.ThirdActivity"
             android:exported="false" />
         <activity
-            android:name=".View.SecondActivity"
+            android:name=".View.View.SecondActivity"
             android:exported="false" />
         <activity
-            android:name=".View.MainActivity"
+            android:name=".View.View.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
