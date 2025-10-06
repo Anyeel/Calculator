@@ -1,7 +1,7 @@
-package com.example.test.View.Controller;
+package com.example.test.Controller;
 
 public class Cifrado {
-    public static String cifrarCesar(String input) {
+    public static String cifrarASCII(String input) {
         String resultado = "";
         for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);

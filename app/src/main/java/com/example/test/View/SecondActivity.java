@@ -1,4 +1,4 @@
-package com.example.test.View.View;
+package com.example.test.View;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.test.R;
-import com.example.test.View.Controller.Cifrado;
+import com.example.test.Controller.Cifrado;
 
 public class SecondActivity extends AppCompatActivity {
 
@@ -48,7 +48,7 @@ public class SecondActivity extends AppCompatActivity {
                 } else if (Pass.length() >= 4 && Pass.length() <= 10 && User.length() >= 4 && User.length() <= 10){
                     if (User.matches("^[a-zA-Z0-9]+$") && Pass.matches("^[a-zA-Z0-9]+$")) {
                         System.out.println("Entrada válida");
-                        String passCifrada = Cifrado.cifrarCesar(Pass);
+                        String passCifrada = Cifrado.cifrarASCII(Pass);
 
                         Toast.makeText(SecondActivity.this, "Logueado", Toast.LENGTH_SHORT).show();
 
