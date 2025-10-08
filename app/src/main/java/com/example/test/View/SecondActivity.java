@@ -62,19 +62,21 @@ public class SecondActivity extends AppCompatActivity {
                 }
 
                 if ((User.length() >= 4 && User.length() <= 10 && User.matches("^[a-zA-Z0-9]+$")) && (Pass.length() >= 4 && Pass.length() <= 10 && Pass.matches("^[a-zA-Z0-9]+$"))) {
-                    String passCifrada = Cifrado.cifrarASCII(Pass);
-                    Toast.makeText(SecondActivity.this, "Logueado", Toast.LENGTH_SHORT).show();
-
-                    Bundle data = new Bundle();
-                    data.putString("Username", User);
-                    data.putString("Contraseña", passCifrada);
-
-                    startActivity(new Intent(SecondActivity.this, ThirdActivity.class).putExtras(data));
+                    sendData(User, Pass);
                 } else {
-                    Toast.makeText(SecondActivity.this, "Solo se permiten letras y números", Toast.LENGTH_SHORT).show();
-                    Toast.makeText(SecondActivity.this, "Ambos campos deben tener entre 4 y 10 caracteres inclusive", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecondActivity.this, "Solo se permiten letras y números, además ambos campos deben tener entre 4 y 10 caracteres inclusive", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+    void sendData(String user, String pass){
+        String passCifrada = Cifrado.cifrarASCII(pass);
+        Toast.makeText(SecondActivity.this, "Logueado", Toast.LENGTH_SHORT).show();
+
+        Bundle data = new Bundle();
+        data.putString("Username", user);
+        data.putString("Contraseña", passCifrada);
+
+        startActivity(new Intent(SecondActivity.this, ThirdActivity.class).putExtras(data));
     }
 }
