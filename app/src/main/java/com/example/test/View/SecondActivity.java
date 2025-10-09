@@ -45,31 +45,31 @@ public class SecondActivity extends AppCompatActivity {
                 UserText.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
                 PassText.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
 
-                if (User.isEmpty()) {
-                    UserText.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
-                } else if (!(User.length() >= 4 && User.length() <= 10 && User.matches("^[a-zA-Z0-9]+$"))) {
-                    UserText.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                if (!(User.length() >= 4 && User.length() <= 10 && User.matches("^[a-zA-Z0-9]+$"))) {
+                    UserText.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#FA6862")));
+                    UserText.setTextColor(Color.parseColor("#FA6862"));
                 } else {
-                    UserText.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                    UserText.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#91F9AE")));
+                    UserText.setTextColor(Color.parseColor("#91F9AE"));
                 }
 
-                if (Pass.isEmpty()) {
-                    PassText.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
-                } else if (!(Pass.length() >= 4 && Pass.length() <= 10 && Pass.matches("^[a-zA-Z0-9]+$"))) {
-                    PassText.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                if (!(Pass.length() >= 4 && Pass.length() <= 10 && Pass.matches("^[a-zA-Z0-9]+$"))) {
+                    PassText.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#FA6862")));
+                    PassText.setTextColor(Color.parseColor("#FA6862"));
                 } else {
-                    PassText.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                    PassText.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#91F9AE")));
+                    PassText.setTextColor(Color.parseColor("#91F9AE"));
                 }
 
                 if ((User.length() >= 4 && User.length() <= 10 && User.matches("^[a-zA-Z0-9]+$")) && (Pass.length() >= 4 && Pass.length() <= 10 && Pass.matches("^[a-zA-Z0-9]+$"))) {
-                    sendData(User, Pass);
+                    sendUserData(User, Pass);
                 } else {
-                    Toast.makeText(SecondActivity.this, "Solo se permiten letras y números, además ambos campos deben tener entre 4 y 10 caracteres inclusive", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecondActivity.this, "Solo se permiten letras y números, ambos entre 4 y 10 caracteres inclusive.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
-    void sendData(String user, String pass){
+    void sendUserData(String user, String pass){
         String passCifrada = Cifrado.cifrarASCII(pass);
         Toast.makeText(SecondActivity.this, "Logueado", Toast.LENGTH_SHORT).show();
 
